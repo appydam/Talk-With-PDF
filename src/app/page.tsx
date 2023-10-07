@@ -2,6 +2,7 @@ import { Button } from '@/components/ui/button'
 import { UserButton, auth } from '@clerk/nextjs'
 import Link from 'next/link';
 import { LogIn } from 'lucide-react';
+import FileUpload from '@/components/FileUpload';
 
 // async makes sure that its a server component
 export default async function Home() {
@@ -10,7 +11,7 @@ export default async function Home() {
   const isAuth = !!userId;
 
   return (
-    <div className="w-screen min-h-screen bg-gradient-to-r from-rose-100 to-teal-100">
+    <div className="w-screen min-h-screen bg-[conic-gradient(var(--tw-gradient-stops))] from-gray-200 via-gray-400 to-gray-600">
     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
       <div className="flex flex-col items-center text-center">
         <div className="flex items-center">
@@ -24,14 +25,14 @@ export default async function Home() {
          }
         </div>
 
-        <p className="max-w-xl mt-1 text-lg text-slate-600">
+        <p className="max-w-xl mt-1 text-lg text-slate-700">
           Join millions of students, researchers and professinals to instantly
           anwer questions and understand research with AI
         </p>
 
         <div className="w-full mt-4">
             {isAuth ? (
-              <h1>upload a file</h1>
+              <FileUpload/>
             ) : (
               <Link href="/sign-in">
                 <Button>
