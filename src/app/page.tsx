@@ -26,8 +26,7 @@ export default async function Home() {
         </div>
 
         <p className="max-w-xl mt-1 text-lg text-slate-700">
-          Join millions of students, researchers and professinals to instantly
-          anwer questions and understand research with AI
+        Empowering Students, Researchers, and Professionals Worldwide with Instant AI-Powered Knowledge and Research Insights.
         </p>
 
         <div className="w-full mt-4">
