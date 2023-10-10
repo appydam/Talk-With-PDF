@@ -6,12 +6,12 @@ import React from "react";
 import { useDropzone } from "react-dropzone";
 import axios from "axios";
 import { toast } from "react-hot-toast";
-// import { useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 // https://github.com/aws/aws-sdk-js-v3/issues/4126
 
 const FileUpload = () => {
-  // const router = useRouter();
+  const router = useRouter();
   const [uploading, setUploading] = React.useState(false);
 
   // mutation is a function that allows us to use backend APIs
@@ -60,17 +60,17 @@ const FileUpload = () => {
 
         // calling mutate function
         // mutation is a function that allows us to use backend APIs
-        
         mutate(data, {
-          onSuccess: (data) => {
-            console.log('success in mutate')
-            console.log('data = ', data);
-            toast.success(data.message)
-            // toast.success("Chat created!");
-            // router.push(`/chat/${chat_id}`);
+          onSuccess: ({chat_id}) => {
+            // console.log('success in mutate')
+            // console.log('data = ', data);
+            // toast.success(data.message)
+
+            toast.success("Chat created!");
+            router.push(`/chat/${chat_id}`);
           },
           onError: (err) => {
-            // toast.error("Error creating chat");
+            toast.error("Error creating chat");
             console.error(err);
           },
         });
