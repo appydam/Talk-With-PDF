@@ -38,7 +38,7 @@ export async function loadS3IntoPinecone(fileKey: string) {
     // loaded the pdf using a langchain library function
     const pdfLoader = new PDFLoader(file_name);
     const pages = (await pdfLoader.load()) as PDFPage[];  // pages will be array of document. Its basically splitting and segmenting the pdf
-    console.log('pages = ', pages);
+    // console.log('pages = ', pages);
  
 
 
@@ -56,14 +56,20 @@ export async function loadS3IntoPinecone(fileKey: string) {
 
     // 4. upload to pinecone
     const client = await getPineconeClient();
-    const pineconeIndex = await client.index("talk-to-pdf");
-    const namespace = pineconeIndex.namespace(convertToAscii(fileKey));
+    const pineconeIndex = await client.index("talkpdf");
+    // const namespace = pineconeIndex.namespace(convertToAscii(fileKey));
 
-    console.log('namespace = ', namespace);
-
+    // console.log('index name = ', pineconeIndex);
+    // console.log('namespace = ', namespace);
 
     console.log("inserting vectors into pinecone");
-    await namespace.upsert(vectors);
+    await pineconeIndex.upsert(vectors);
+
+
+    // console.log("inserting vectors into pinecone");
+    // await namespace.upsert(vectors);
+    console.log('upserted???')
+    console.log('documents = ', documents);
 
     return documents[0];
 }

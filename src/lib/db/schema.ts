@@ -19,7 +19,7 @@ import {
     fileKey: text("file_key").notNull(),
   });
   
-  export type DrizzleChat = typeof chats.$inferSelect;
+  export type DrizzleChat = typeof chats.$inferSelect; // it will give us proper type of chat
   
   export const messages = pgTable("messages", {
     id: serial("id").primaryKey(),

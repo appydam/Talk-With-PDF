@@ -9,6 +9,6 @@ export function cn(...inputs: ClassValue[]) {
 export function convertToAscii(inputString: string) {
   // remove all non ascii characters
   const asciiString = inputString.replace(/[^\x00-\x7F]+/g, "");
-  console.log('asciiString = ', asciiString);
+  // console.log('asciiString = ', asciiString);
   return asciiString;
 }
