@@ -46,7 +46,7 @@ export async function loadS3IntoPinecone(fileKey: string) {
     // pages = Array(20)
     const documents = await Promise.all(pages.map(prepareDocument))
     // pages = Array(100)
-    console.log('documents = ', documents);
+    // console.log('documents = ', documents);
 
     // now that we have all documents, we can now vectorise and embed the individual documents
 
@@ -69,7 +69,7 @@ export async function loadS3IntoPinecone(fileKey: string) {
     // console.log("inserting vectors into pinecone");
     // await namespace.upsert(vectors);
     console.log('upserted???')
-    console.log('documents = ', documents);
+    // console.log('documents = ', documents);
 
     return documents[0];
 }
