@@ -1,14 +1,28 @@
 import { Button } from '@/components/ui/button'
 import { UserButton, auth } from '@clerk/nextjs'
 import Link from 'next/link';
-import { LogIn } from 'lucide-react';
+import { ArrowRight, LogIn } from 'lucide-react';
 import FileUpload from '@/components/FileUpload';
+import { checkSubscription } from '@/lib/subscription';
+import SubscriptionButton from '@/components/SubscriptionButton';
+import { chats } from '@/lib/db/schema';
+import { eq } from 'drizzle-orm';
+import { db } from '@/lib/db';
 
 // async makes sure that its a server component
 export default async function Home() {
 
   const {userId} = await auth();
   const isAuth = !!userId;
+  const isPro = await checkSubscription();
+
+  let firstChat;
+  if (userId) {
+    firstChat = await db.select().from(chats).where(eq(chats.userId, userId));
+    if (firstChat) {
+      firstChat = firstChat[0];
+    }
+  }
 
   return (
     <div className="w-screen min-h-screen bg-[conic-gradient(var(--tw-gradient-stops))] from-gray-200 via-gray-400 to-gray-600">
@@ -21,8 +35,17 @@ export default async function Home() {
 
         <div className="flex mt-2">
          {
-          isAuth && <Button>Go to chats</Button>
+          isAuth && firstChat && 
+          <Link href={`/chat/${firstChat.id}`}>
+            <Button>Go to chats <ArrowRight className='ml-2'/> </Button>
+          </Link>
+          
          }
+
+         <div className="ml-3">
+          <SubscriptionButton isPro={isPro}/>
+         </div>
+
         </div>
 
         <p className="max-w-xl mt-1 text-lg text-slate-700">
