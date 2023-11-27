@@ -62,17 +62,16 @@ const ChatSideBar = ({chats, chatId, isPro}: Props) => {
 
 
 
-        <div className='absolute bottom-4 left-4'>
-            <div className='flex items-center gap-2 flex-wrap text-sm text-gray-500'>
+        {/* <div className='absolute bottom-2 left-4'> */}
+            {/* <div className='text-lg text-gray-900 bg-slate-200 m-1 p-2 rounded-md w-72 text-center'>
                 <Link href='/'>Home</Link>
-                <Link href='/'>Source</Link>
-                {/* Stripe button */}
-            </div>
+               
+            </div> */}
             {/* <Button className='mt-2 text-white bg-slate-700' disabled={loading} onClick={handleSubscription}>
                 Upgrade to Pro
             </Button> */}
-            <SubscriptionButton isPro={isPro}/>
-        </div>
+            {/* <SubscriptionButton isPro={isPro}/> */}
+        {/* </div> */}
 
 
 

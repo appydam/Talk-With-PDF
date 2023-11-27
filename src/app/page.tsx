@@ -8,6 +8,7 @@ import SubscriptionButton from '@/components/SubscriptionButton';
 import { chats } from '@/lib/db/schema';
 import { eq } from 'drizzle-orm';
 import { db } from '@/lib/db';
+import Navbar from '@/components/Navbar';
 
 // async makes sure that its a server component
 export default async function Home() {
@@ -26,7 +27,9 @@ export default async function Home() {
 
   return (
     <div className="w-screen min-h-screen bg-[conic-gradient(var(--tw-gradient-stops))] from-gray-200 via-gray-400 to-gray-600">
+    <Navbar/>
     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+    
       <div className="flex flex-col items-center text-center">
         <div className="flex items-center">
           <h1 className="mr-3 text-5xl font-semibold">Talk with PDF</h1>
@@ -39,12 +42,11 @@ export default async function Home() {
           <Link href={`/chat/${firstChat.id}`}>
             <Button>Go to chats <ArrowRight className='ml-2'/> </Button>
           </Link>
-          
          }
 
-         <div className="ml-3">
+         {/* <div className="ml-3">
           <SubscriptionButton isPro={isPro}/>
-         </div>
+         </div> */}
 
         </div>
 

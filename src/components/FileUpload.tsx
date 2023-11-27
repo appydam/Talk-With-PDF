@@ -61,13 +61,12 @@ const FileUpload = () => {
         // calling mutate function
         // mutation is a function that allows us to use backend APIs
         mutate(data, {
-          onSuccess: ({chat_id}) => {
+          onSuccess: ({chat_id}) => { // we are getting chat_id as a response back from api/create_chat
             // console.log('success in mutate')
             // console.log('data = ', data);
-            // toast.success(data.message)
 
             toast.success("Chat created!");
-            router.push(`/chat/${chat_id}`);
+            router.push(`/chat/${chat_id}`);  // route to page localhost:3000/chat/{chat_id}
           },
           onError: (err) => {
             toast.error("Error creating chat");
@@ -82,6 +81,7 @@ const FileUpload = () => {
       }
     },
   });
+  
   return (
     <div className="p-2 bg-white rounded-xl">
       <div
@@ -101,7 +101,7 @@ const FileUpload = () => {
           </>
         ) : (
           <>
-            <Inbox className="w-10 h-10 text-blue-500" />
+            <Inbox className="w-10 h-10 text-gray-400" />
             <p className="mt-2 text-sm text-slate-400">Drop PDF Here</p>
           </>
         )}

@@ -9,6 +9,7 @@ import { chats } from '@/lib/db/schema';
 import { checkSubscription } from '@/lib/subscription';
 import { auth } from '@clerk/nextjs';
 import { eq } from 'drizzle-orm';
+import Link from 'next/link';
 import { redirect } from 'next/navigation';
 import React from 'react'
 
@@ -43,8 +44,9 @@ const ChatPage = async({params: {chatId}}: Props) => {   // we have just passed 
 
 
   return (
-    <div className='flex max-h-screen overflow-scroll'>
-      <div className='flex w-full max-h-screen overflow-scroll'>
+    <div className='flex h-[92vh] overflow-hidden rounded-2xl m-4 border border-gray-900 '>
+      <div className='flex w-full h-full overflow-hidden'>
+  
 
         {/* chat sidebar */}
         <div className='flex-[1] max-w-xs'>
@@ -61,10 +63,13 @@ const ChatPage = async({params: {chatId}}: Props) => {   // we have just passed 
           <ChatComponent chatId={parseInt(chatId)}/>  {/* we passed this chatId to ChatComponent */}
         </div>
 
-
       </div>
 
-
+      <div className='absolute bottom-2 left-4'>
+        <div className='text-lg text-gray-900 bg-slate-200 m-1 p-2 rounded-md w-72 text-center'>
+              <Link href='/'>Home</Link>
+        </div>
+      </div>
     </div>
   )
 }
