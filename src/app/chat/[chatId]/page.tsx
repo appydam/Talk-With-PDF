@@ -9,6 +9,7 @@ import { chats } from '@/lib/db/schema';
 import { checkSubscription } from '@/lib/subscription';
 import { auth } from '@clerk/nextjs';
 import { eq } from 'drizzle-orm';
+import { Home } from 'lucide-react';
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
 import React from 'react'
@@ -44,9 +45,9 @@ const ChatPage = async({params: {chatId}}: Props) => {   // we have just passed 
 
 
   return (
-    <div className='flex h-[92vh] overflow-hidden rounded-2xl m-4 border border-gray-900 '>
+    <div className="">
+    <div className='flex h-[90vh] overflow-hidden rounded-2xl mx-4 my-4 border border-gray-900 '>
       <div className='flex w-full h-full overflow-hidden'>
-  
 
         {/* chat sidebar */}
         <div className='flex-[1] max-w-xs'>
@@ -64,12 +65,17 @@ const ChatPage = async({params: {chatId}}: Props) => {   // we have just passed 
         </div>
 
       </div>
-
-      <div className='absolute bottom-2 left-4'>
-        <div className='text-lg text-gray-900 bg-slate-200 m-1 p-2 rounded-md w-72 text-center'>
-              <Link href='/'>Home</Link>
-        </div>
       </div>
+
+      <div className=" flex items-center justify-center -translate-y-5 p-4">
+        <button className="flex bg-gray-500 text-white p-2 rounded-lg">
+          <Link href='/'><span className='mr-2'>Home</span> </Link>
+          <Home size={20} strokeWidth={1.5}/>
+        </button>
+      </div>
+
+
+
     </div>
   )
 }
