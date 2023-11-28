@@ -10,6 +10,7 @@ import { eq } from 'drizzle-orm';
 import { db } from '@/lib/db';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import Image from 'next/image';
 
 // async makes sure that its a server component
 export default async function Home() {
@@ -89,19 +90,33 @@ export default async function Home() {
         <div className='flex -translate-x-32'>
         <span className="mb-4 text-slate-900 translate-y-6 -translate-x-6">We have your favorite social logins!</span>
           <div className=" p-4 rounded-lg shadow-2xl max-w-[20vw] max-h-[10vh]">
-            <img
+            {/* <img
               src={socialLogins}
               alt="Desktop"
               className="w-full h-30px object-cover rounded-lg"
+            /> */}
+            <Image
+              src={socialLogins}
+              width={10000}
+              height={10000}
+              alt="Picture of social logins"
+              className="w-full h-full object-cover rounded-lg"
             />
           </div>
         </div>
         
         <div className='flex items-center'>
           <div className="p-4 rounded-lg shadow-2xl max-w-[70vw] max-h-[70vh] w-full h-full mt-8">
-            <img
+            {/* <img
               src={chatPageImageURL}
               alt="Desktop"
+              className="w-full h-full object-cover rounded-lg"
+            /> */}
+            <Image
+              src={chatPageImageURL}
+              width={10000}
+              height={10000}
+              alt="Picture of the chat UI"
               className="w-full h-full object-cover rounded-lg"
             />
           </div>
